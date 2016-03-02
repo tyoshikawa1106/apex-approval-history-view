@@ -43,11 +43,4 @@ public with sharing class AccountApprovalInfoViewDao {
             LIMIT 50
         ];
     }
-
-    /**
-     * ユーザ情報取得
-     */
-    public List<User> getActorUsers(Set<Id> userIds) {
-        return [SELECT Id,Name FROM User WHERE Id IN: userIds];
-    }
 }

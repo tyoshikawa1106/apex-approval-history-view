@@ -14,22 +14,22 @@
                     <apex:outputField value="{!Account.AccountNumber}" />
                 </apex:pageBlockSection>
             </apex:pageBlock>
-            <apex:pageBlock title="承認履歴" rendered="{!processInstanceInfoList.size > 0}">
-                <apex:pageBlockTable value="{!processInstanceInfoList}" var="item">
+            <apex:pageBlock title="承認履歴" rendered="{!processInstanceHistories.size > 0}">
+                <apex:pageBlockTable value="{!processInstanceHistories}" var="item">
                     <apex:column headerValue="日付">
-                        <apex:outputText value="{!item.completedDate}" />
+                        <apex:outputField value="{!item.CreatedDate}" />
                     </apex:column>
                     <apex:column headerValue="状況">
-                        <apex:outputText value="{!item.stepStatus}" />
+                        <apex:outputField value="{!item.StepStatus}" />
                     </apex:column>
-                    <apex:column headerValue="割当先">
-                        <apex:outputText value="{!item.originalActorUser}" />
+                    <apex:column headerValue="割り当て先">
+                        <apex:outputField value="{!item.OriginalActorId}" />
                     </apex:column>
                     <apex:column headerValue="承認者">
-                        <apex:outputText value="{!item.actorUser}" />
+                        <apex:outputField value="{!item.ActorId}" />
                     </apex:column>
                     <apex:column headerValue="コメント">
-                        <apex:outputText value="{!item.comment}" />
+                        <apex:outputField value="{!item.Comments}" />
                     </apex:column>
                 </apex:pageBlockTable>
             </apex:pageBlock>

@@ -16,7 +16,7 @@ private class AccountApprovalInfoViewControllerTest {
 
             Test.stopTest();
 
-            System.assertEquals(cls.processInstanceInfoList.size(), 0);
+            System.assertEquals(cls.processInstanceHistories.size(), 0);
         }
     }
 }

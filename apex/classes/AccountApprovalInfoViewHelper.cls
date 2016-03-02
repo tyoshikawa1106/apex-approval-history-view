@@ -6,31 +6,16 @@ public with sharing class AccountApprovalInfoViewHelper {
     public AccountApprovalInfoViewHelper() {
         
     }
-    
+
     /**
-     * ユーザID取得
+     * 承認履歴情報取得
      */
-    public Set<Id> getActorIds(List<ProcessInstance> processInstances) {
-        Set<Id> userIds = new Set<Id>();
+    public List<ProcessInstanceHistory> getProcessInstanceHistories(List<ProcessInstance> processInstances) {
+        List<ProcessInstanceHistory> processInstanceHistories = new List<ProcessInstanceHistory>();
         for (ProcessInstance p : processInstances) {
-            for (ProcessInstanceHistory history : p.StepsAndWorkitems) {
-                userIds.add(history.ActorId);
-                userIds.add(history.OriginalActorId);
-            }
+            processInstanceHistories.addAll(p.StepsAndWorkitems);
         }
-        return userIds;
-    }
-    
-    /**
-     * 戻り値リスト取得
-     */
-    public List<ProcessInstanceInfo> getProcessInstanceInfoList(List<ProcessInstance> processInstances, Map<Id, User> userMap) {
-        List<ProcessInstanceInfo> results = new List<ProcessInstanceInfo>();
-        for (ProcessInstance p : processInstances) {
-            for (ProcessInstanceHistory history : p.StepsAndWorkitems) {
-                results.add(new ProcessInstanceInfo(history, userMap));
-            }
-        }
-        return results;
+
+        return processInstanceHistories;
     }
 }

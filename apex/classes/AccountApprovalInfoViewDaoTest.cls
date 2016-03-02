@@ -51,40 +51,4 @@ private class AccountApprovalInfoViewDaoTest {
             System.assertEquals(results.size(), 1);
         }
     }
-
-    /**
-     * ユーザ情報取得
-     * 値なし
-     */
-    static testMethod void getActorUsersTest1() {
-        System.runAs(testAdminUser) {
-
-            Test.startTest();
-
-            Set<Id> userIds = new Set<Id>();
-            List<User> results = dao.getActorUsers(userIds);
-
-            Test.stopTest();
-
-            System.assertEquals(results.size(), 0);
-        }
-    }
-
-    /**
-     * ユーザ情報取得
-     * 値あり
-     */
-    static testMethod void getActorUsersTest2() {
-        System.runAs(testAdminUser) {
-
-            Test.startTest();
-
-            Set<Id> userIds = new Set<Id>{testAdminUser.Id};
-            List<User> results = dao.getActorUsers(userIds);
-
-            Test.stopTest();
-
-            System.assertEquals(results.size(), 1);
-        }
-    }
 }
