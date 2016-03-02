@@ -1,0 +1,38 @@
+<apex:page standardController="Account" extensions="AccountApprovalInfoViewController" showHeader="true" sidebar="false" tabStyle="Account" id="page">
+    <div id="vf-page">
+        <apex:form id="form">
+            <apex:pageBlock title="取引先情報" id="block">
+                <apex:pageMessages id="msg" />
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandButton value=" New " title=" New " action="{!Create}" reRender="form" />
+                    <apex:commandButton value=" Edit " title=" Edit " action="{!Edit}" reRender="form" />
+                    <apex:commandButton value=" Delete " title=" Delete " action="{!Delete}" reRender="form" />
+                    <apex:commandButton value=" Cancel " title=" Cancel " action="{!Cancel}" reRender="form" />
+                </apex:pageBlockButtons>
+                <apex:pageBlockSection columns="2">
+                    <apex:outputField value="{!Account.Name}" />
+                    <apex:outputField value="{!Account.AccountNumber}" />
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+            <apex:pageBlock title="承認履歴" rendered="{!processInstanceInfoList.size > 0}">
+                <apex:pageBlockTable value="{!processInstanceInfoList}" var="item">
+                    <apex:column headerValue="日付">
+                        <apex:outputText value="{!item.completedDate}" />
+                    </apex:column>
+                    <apex:column headerValue="状況">
+                        <apex:outputText value="{!item.stepStatus}" />
+                    </apex:column>
+                    <apex:column headerValue="割当先">
+                        <apex:outputText value="{!item.originalActorUser}" />
+                    </apex:column>
+                    <apex:column headerValue="承認者">
+                        <apex:outputText value="{!item.actorUser}" />
+                    </apex:column>
+                    <apex:column headerValue="コメント">
+                        <apex:outputText value="{!item.comment}" />
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:form>
+    </div>
+</apex:page>
