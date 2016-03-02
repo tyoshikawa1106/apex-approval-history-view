@@ -28,7 +28,6 @@ public with sharing class AccountApprovalInfoViewController {
         } catch(Exception e) {
             ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.FATAL,e.getMessage()));
             return;
-        }        
+        }
     }
-
 }

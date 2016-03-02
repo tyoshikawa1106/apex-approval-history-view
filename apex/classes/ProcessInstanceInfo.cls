@@ -27,7 +27,9 @@ public with sharing class ProcessInstanceInfo {
      */
     public ProcessInstanceInfo(ProcessInstanceHistory history, Map<Id, User> userMap) {
         // 日付
-        this.completedDate = history.CreatedDate.format('yyyy/MM/dd HH:mm:ss', 'JST');
+        if (history.CreatedDate != null) {
+            this.completedDate = history.CreatedDate.format('yyyy/MM/dd HH:mm:ss', 'JST');
+        }
         // 状況
         this.stepStatus = this.getStepStatus(history.StepStatus);
         // 割当先
